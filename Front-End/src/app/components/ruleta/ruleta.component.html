@@ -1,0 +1,66 @@
+<div class="row mt-4">
+
+    <button *ngIf="ruleta.estado == 0" (click)="abrir()" class="btn btn-success col-lg-4 offset-lg-4 btn-lg">Abrir Ruleta</button>
+    <button *ngIf="ruleta.estado != 0" (click)="cerrar()" class="btn btn-danger col-lg-4 offset-lg-4 btn-lg">Cerrar Ruleta</button>
+
+  
+</div>
+
+
+<div class="main mt-4">
+  <ngx-wheel #wheel
+  width='600'
+  height='600'
+  spinDuration='8'
+  [disableSpinOnClick]='true'
+  [items]='items'
+  [innerRadius]='50'
+  [spinAmount]='10'
+  pointerStrokeColor='red'
+  pointerFillColor='purple'
+  [idToLandOn]='idToLandOn'
+  (onSpinStart)='before()'
+  (onSpinComplete)='after()'
+>
+</ngx-wheel></div>
+<div *ngIf="ruleta.estado != 0">
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+    <div class="card">
+      <div class="card-body">
+
+          <h5 class="text-center mt-5">Datos De Apuesta</h5>
+          <div class="input-group input-group-lg mb-3">
+              <input  [(ngModel)]="valorApuesta" type="number" class="form-control" placeholder="Valor de la apuesta">
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-3 offset-lg-3">
+              <button (click)="color()"  type="button" class="btn btn-outline-info btn-lg">Apostar Por Color</button>
+              <br>
+              <br>
+              <div *ngIf="tipoApuesta==2">
+                <button (click)="rojo()" type="button" class="btn btn-danger">Rojo &nbsp;&nbsp;</button>
+                <br>
+                <button (click)="negro()" type="button" class="btn btn-dark">Negro</button>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <button type="button"  (click)="numero()" class="btn btn-outline-success btn-lg">Apostar Por Numero</button>
+              <br>
+              <br>
+              <div *ngIf="tipoApuesta==1" class="input-group input-group-lg mb-3">
+                <input  [(ngModel)]="numeroApuesta" type="number" class="form-control"  placeholder="Numero a apostar">
+            </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="tipoApuesta>0">
+  <button *ngIf="jugando == 0" (click)="[myReset(),wheel.reset()]" (click)="abrir()" class="btn btn-info col-lg-4 offset-lg-4 btn-lg">Estoy Listo Para Jugar</button>
+  <button *ngIf="jugando == 1" (click)="[play(),wheel.spin()]" class="btn btn-info col-lg-4 offset-lg-4 btn-lg">Jugar</button>
+  <button *ngIf="jugando == 2" (click)="[myReset(),wheel.reset()]" class="btn btn-info col-lg-4 offset-lg-4 btn-lg">Reiniciar</button>
+</div>
+</div>

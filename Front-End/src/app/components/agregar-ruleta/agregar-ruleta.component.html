@@ -1,0 +1,56 @@
+<div class="row mt-4">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+            <div class="card-boby">
+                <h4 class="text-center">Agregar Ruleta</h4>
+                <form [formGroup]="form" (ngSubmit)="agregarRuleta()" class="mt-5">
+                    <h5 class="text-center mt-5">Datos personales</h5>
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fas fa-user"
+                            [class.green-icon]="this.form.get('creador')?.valid"
+                            [class.red-icon]="this.form.get('creador')?.invalid && this.form.get('creador')?.touched"></i>
+                         </span>
+                        <input formControlName="creador" type="text" class="form-control" placeholder="Nombre del creador">
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-fingerprint"
+                            [class.green-icon]="this.form.get('documento')?.valid"
+                            [class.red-icon]="this.form.get('documento')?.invalid && this.form.get('documento')?.touched"></i>                         
+                        </span>
+                        <input formControlName="documento" maxlength="16" type="text" class="form-control" placeholder="Documento">
+                    </div>
+                    <h5 class="text-center mt-5">Datos de ruleta</h5>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-0"
+                                    [class.green-icon]="this.form.get('nMin')?.valid"
+                                    [class.red-icon]="this.form.get('nMin')?.invalid && this.form.get('nMin')?.touched"></i>                        
+                                </span>
+                                <input formControlName="nMin" maxlength="2" type="text" class="form-control" placeholder="Numero minimo">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-9"
+                                    [class.green-icon]="this.form.get('nMax')?.valid"
+                                    [class.red-icon]="this.form.get('nMax')?.invalid && this.form.get('nMax')?.touched"></i>
+                                    <i class="fa-solid fa-9"
+                                    [class.green-icon]="this.form.get('nMax')?.valid"
+                                    [class.red-icon]="this.form.get('nMax')?.invalid && this.form.get('nMax')?.touched"></i>                     
+                                </span>
+                                <input formControlName="nMax" maxlength="2" type="text" class="form-control" placeholder="Numero maximo">
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="this.form.invalid" type="submit" class="btn btn-success col-lg-4 offset-lg-4 mt-3 btn-lg">Agregar Nueva Ruleta</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

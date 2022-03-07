@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="titulo">Ludopatia</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+            <div class="card-boby">
+                <h4 class="text-center">Ruletas</h4>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let ruleta of lista">
+                            <td> {{ruleta.numeroRuleta}} </td>
+                            <td>{{ruleta.creadorNombre}} </td>
+                            <td>{{ruleta.numeroMinimo}} </td>
+                            <td>{{ruleta.numeroMaximo}} </td>
+                            <td *ngIf="ruleta.estado > 0">Abierto</td>
+                            <td *ngIf="ruleta.estado == 0">Cerrado</td>
+                            <td><i (click)="editar(ruleta.id)" class="fa fa-solid fa-play text-success"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="agregar()" class="btn btn-info col-lg-4 offset-lg-4">Agregar Nueva Ruleta</button>
+            </div>
+        </div>
+    </div>
+</div>
