@@ -1,3 +1,5 @@
 # Ruleta-Gran-Titan
 Ruleta de apuestas Angular12
-La llamar a la base de datos "Ruleta"
+Llamar a la base de datos "Ruleta"
+
+Cambiar variables de libreria
